@@ -22,6 +22,8 @@
 		0D15AFA32C296E1900E922DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9F2C296E1900E922DF /* Pretendard-SemiBold.otf */; };
 		0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA872C298AD500A84E2D /* UIView+.swift */; };
 		0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA892C298AF500A84E2D /* UIStackView+.swift */; };
+		0D42CA8C2C298B3700A84E2D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8B2C298B3700A84E2D /* LoginView.swift */; };
+		0D42CA8E2C299A9D00A84E2D /* nickNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8D2C299A9D00A84E2D /* nickNameInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		0D15AF9F2C296E1900E922DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		0D42CA872C298AD500A84E2D /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		0D42CA892C298AF500A84E2D /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		0D42CA8B2C298B3700A84E2D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0D42CA8D2C299A9D00A84E2D /* nickNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nickNameInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,6 @@
 				0D15AF932C296B2E00E922DF /* Presentation */,
 				0D15AF942C296B3E00E922DF /* Application */,
 				0D15AF952C296B5600E922DF /* Global */,
-				0D15AF712C2964F100E922DF /* LoginViewController.swift */,
 				0D15AF732C2964F100E922DF /* Main.storyboard */,
 			);
 			path = "popping-iOS";
@@ -177,6 +180,7 @@
 		0D42CA842C29803400A84E2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0D42CA8B2C298B3700A84E2D /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +188,8 @@
 		0D42CA852C29803B00A84E2D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0D15AF712C2964F100E922DF /* LoginViewController.swift */,
+				0D42CA8D2C299A9D00A84E2D /* nickNameInputViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -279,7 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D42CA8C2C298B3700A84E2D /* LoginView.swift in Sources */,
 				0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */,
+				0D42CA8E2C299A9D00A84E2D /* nickNameInputViewController.swift in Sources */,
 				0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */,
 				0D15AF722C2964F100E922DF /* LoginViewController.swift in Sources */,
 				0D15AF6E2C2964F100E922DF /* AppDelegate.swift in Sources */,
@@ -437,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "popping-iOS/Info.plist";
+				INFOPLIST_FILE = "popping-iOS/Global/Settings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -465,7 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "popping-iOS/Info.plist";
+				INFOPLIST_FILE = "popping-iOS/Global/Settings/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
