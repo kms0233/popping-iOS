@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D15AF6E2C2964F100E922DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15AF6D2C2964F100E922DF /* AppDelegate.swift */; };
 		0D15AF702C2964F100E922DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15AF6F2C2964F100E922DF /* SceneDelegate.swift */; };
-		0D15AF722C2964F100E922DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15AF712C2964F100E922DF /* ViewController.swift */; };
+		0D15AF722C2964F100E922DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15AF712C2964F100E922DF /* LoginViewController.swift */; };
 		0D15AF752C2964F100E922DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF732C2964F100E922DF /* Main.storyboard */; };
 		0D15AF772C2964F200E922DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF762C2964F200E922DF /* Assets.xcassets */; };
 		0D15AF7A2C2964F200E922DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF782C2964F200E922DF /* LaunchScreen.storyboard */; };
@@ -20,13 +20,15 @@
 		0D15AFA12C296E1900E922DF /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9D2C296E1900E922DF /* Pretendard-Medium.otf */; };
 		0D15AFA22C296E1900E922DF /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9E2C296E1900E922DF /* Pretendard-Regular.otf */; };
 		0D15AFA32C296E1900E922DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9F2C296E1900E922DF /* Pretendard-SemiBold.otf */; };
+		0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA872C298AD500A84E2D /* UIView+.swift */; };
+		0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA892C298AF500A84E2D /* UIStackView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D15AF6A2C2964F100E922DF /* popping-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "popping-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D15AF6D2C2964F100E922DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D15AF6F2C2964F100E922DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0D15AF712C2964F100E922DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D15AF712C2964F100E922DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0D15AF742C2964F100E922DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D15AF762C2964F200E922DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D15AF792C2964F200E922DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +37,8 @@
 		0D15AF9D2C296E1900E922DF /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		0D15AF9E2C296E1900E922DF /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		0D15AF9F2C296E1900E922DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		0D42CA872C298AD500A84E2D /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		0D42CA892C298AF500A84E2D /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,7 @@
 				0D15AF932C296B2E00E922DF /* Presentation */,
 				0D15AF942C296B3E00E922DF /* Application */,
 				0D15AF952C296B5600E922DF /* Global */,
-				0D15AF712C2964F100E922DF /* ViewController.swift */,
+				0D15AF712C2964F100E922DF /* LoginViewController.swift */,
 				0D15AF732C2964F100E922DF /* Main.storyboard */,
 			);
 			path = "popping-iOS";
@@ -119,6 +123,8 @@
 		0D15AF962C296B8400E922DF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0D42CA872C298AD500A84E2D /* UIView+.swift */,
+				0D42CA892C298AF500A84E2D /* UIStackView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -161,8 +167,32 @@
 		0D15AFA42C2977E600E922DF /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				0D42CA842C29803400A84E2D /* Views */,
+				0D42CA852C29803B00A84E2D /* ViewControllers */,
+				0D42CA862C29805C00A84E2D /* Cells */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0D42CA842C29803400A84E2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D42CA852C29803B00A84E2D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0D42CA862C29805C00A84E2D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D15AF722C2964F100E922DF /* ViewController.swift in Sources */,
+				0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */,
+				0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */,
+				0D15AF722C2964F100E922DF /* LoginViewController.swift in Sources */,
 				0D15AF6E2C2964F100E922DF /* AppDelegate.swift in Sources */,
 				0D15AF702C2964F100E922DF /* SceneDelegate.swift in Sources */,
 			);
