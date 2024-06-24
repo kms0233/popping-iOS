@@ -16,6 +16,8 @@ final class LoginViewController: UIViewController {
     // MARK: - UI Properties
     private let loginView = LoginView()
     
+    var nickname: String = ""
+    
     // MARK: - Life Cycles
 
     override func viewDidLoad() {
@@ -45,14 +47,21 @@ private extension LoginViewController {
     
     func setStyle() {
         self.view.backgroundColor = UIColor(resource: .black)
+        
+
     }
     
     func setDelegate() {
-    
+       
     }
   
     
 }
 
-
+extension LoginViewController: nickNameInputViewControllerDelegate {
+    
+    func saveUserNickname(nickname: String) {
+        self.nickname = nickname
+    }
+}
 

@@ -96,6 +96,7 @@ private extension LoginView {
             $0.numberOfLines = 1
             $0.font = UIFont(name: "Pretendard-Medium", size: 13)
         }
+        
         idTextField.do {
             $0.font = UIFont(name: "Pretendard-Semibold", size: 13)
             $0.backgroundColor = .white
