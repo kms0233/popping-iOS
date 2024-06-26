@@ -60,14 +60,26 @@ private extension nickNameInputViewController {
         }
         
         nicknameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(50)
+            $0.top.equalTo(bottomSheetView.snp.top).inset(45)
             $0.leading.equalToSuperview().inset(20)
         }
         
+        nicknameTextField.snp.makeConstraints {
+            $0.top.equalTo(nicknameLabel.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(56)
+        }
         startButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(30)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(56)
+        }
+        
+        logoImgaeView.snp.makeConstraints {
+            $0.top.equalTo(bottomSheetView.snp.top).inset(193)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(163)
+            $0.height.equalTo(36)
         }
         
     }
@@ -92,6 +104,22 @@ private extension nickNameInputViewController {
             $0.textAlignment = .center
             $0.numberOfLines = 1
             $0.font = UIFont(name: "Pretendard-Semibold", size: 20)
+        }
+        
+        nicknameTextField.do {
+            $0.font = UIFont(name: "Pretendard-Semibold", size: 13)
+            $0.backgroundColor = .gray3
+            $0.layer.cornerRadius = 7
+            $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: $0.frame.height))
+            $0.leftViewMode = .always
+            $0.textColor = UIColor(resource: .black)
+            
+            // placeholder의 색상을 변경
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.gray1, // 변경하고자 하는 색상
+                .font: UIFont(name: "Pretendard-Semibold", size: 13) ?? UIFont.systemFont(ofSize: 13) // 폰트 설정 (nil 방지를 위한 기본 폰트)
+            ]
+            $0.attributedPlaceholder = NSAttributedString(string: "닉네임 (최소 2자,  최대 10자)", attributes: attributes)
         }
         
         startButton.do {
