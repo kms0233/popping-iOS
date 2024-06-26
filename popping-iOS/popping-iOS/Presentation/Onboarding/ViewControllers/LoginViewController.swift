@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController, LoginViewDelegate {
     
     // MARK: - UI Properties
     private let loginView = LoginView()
@@ -19,7 +19,7 @@ final class LoginViewController: UIViewController {
     var nickname: String = ""
     
     // MARK: - Life Cycles
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +27,13 @@ final class LoginViewController: UIViewController {
         setLayout()
         setStyle()
         setDelegate()
+    }
+    
+    func presentCreateNicknameVC() {
+        let createNicknameVC = nickNameInputViewController()
+        createNicknameVC.delegate = self
+        createNicknameVC.modalPresentationStyle = .overFullScreen
+        self.present(createNicknameVC, animated: true)
     }
 }
 
@@ -41,27 +48,28 @@ private extension LoginViewController {
     
     func setLayout() {
         loginView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
     }
     
     func setStyle() {
         self.view.backgroundColor = UIColor(resource: .black)
         
-
     }
     
     func setDelegate() {
-       
+        loginView.delegate = self
     }
-  
+    
+    
     
 }
 
-extension LoginViewController: nickNameInputViewControllerDelegate {
+extension LoginViewController: nickNameInputVCDelegate {
     
     func saveUserNickname(nickname: String) {
         self.nickname = nickname
     }
+    
 }
 

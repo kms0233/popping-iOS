@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-protocol nickNameInputViewControllerDelegate: AnyObject {
+protocol nickNameInputVCDelegate: AnyObject {
     func saveUserNickname(nickname: String)
 }
 
@@ -24,7 +24,7 @@ final class nickNameInputViewController: UIViewController {
     private let startButton = UIButton()
     private let logoImgaeView = UIImageView(image: .logoBlur)
     
-    
+    weak var delegate: nickNameInputVCDelegate?
     
     // MARK: - Life Cycles
     
@@ -88,9 +88,9 @@ private extension nickNameInputViewController {
         dimmedView.do {
             $0.alpha = 0.7
             $0.layer.backgroundColor = UIColor(resource: .black).cgColor
-            //let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapDimmedView))
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapDimmedView))
             $0.isUserInteractionEnabled = true
-            //$0.addGestureRecognizer(gesture)
+            $0.addGestureRecognizer(gesture)
         }
         
         bottomSheetView.do {
@@ -128,25 +128,24 @@ private extension nickNameInputViewController {
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 14)
             $0.layer.cornerRadius = 7
-            
         }
-        
-        
-        
-        
+    }
+
+    func setActions() {
+        startButton.addTarget(self, action: #selector(pushToOnboardingVC), for: .touchUpInside)
     }
     
     @objc
     func pushToOnboardingVC() {
         let nickname = self.nicknameTextField.text ?? ""
-       // self.delegate?.saveUserNickname(nickname: nickname)
-        self.dismiss(animated: true)
+        self.delegate?.saveUserNickname(nickname: nickname)
+        let mainVC = mainViewController()
+        mainVC.modalPresentationStyle = .fullScreen
+        self.present(mainVC, animated: true)
     }
     
     @objc
     func didTapDimmedView(sender: UITapGestureRecognizer) {
         self.dismiss(animated: true)
     }
-    
 }
-

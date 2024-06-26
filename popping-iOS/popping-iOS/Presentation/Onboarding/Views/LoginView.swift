@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol LoginViewDelegate: AnyObject {
+    func presentCreateNicknameVC()
+}
+
 final class LoginView: UIView {
     
     // MARK: - UI Properties
@@ -19,13 +23,12 @@ final class LoginView: UIView {
     private let passwordTextField = UITextField()
     private lazy var loginButton = UIButton()
     private let joinLabel = UILabel()
-
     
     // MARK: - Properties
-    
+    weak var delegate: LoginViewDelegate?
     
     // MARK: - Life Cycles
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -37,10 +40,7 @@ final class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-   
 }
-
 
 // MARK: - Private Methods
 
@@ -74,7 +74,7 @@ private extension LoginView {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(56)
         }
-       
+        
         loginButton.snp.makeConstraints {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(18)
             $0.leading.trailing.equalToSuperview().inset(16)
@@ -134,6 +134,10 @@ private extension LoginView {
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 14)
             $0.layer.cornerRadius = 7
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
+            $0.isUserInteractionEnabled = true
+            $0.addGestureRecognizer(gesture)
         }
         
         joinLabel.do {
@@ -142,10 +146,11 @@ private extension LoginView {
             $0.textAlignment = .center
             $0.numberOfLines = 1
             $0.font = UIFont(name: "Pretendard-Medium", size: 13)
-            
         }
-        
-  
+    }
+    
+    @objc
+    func loginButtonTapped(sender: UITapGestureRecognizer) {
+        delegate?.presentCreateNicknameVC()
     }
 }
-
