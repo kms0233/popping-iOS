@@ -60,8 +60,8 @@ private extension PagerButtonCell {
     func setStyle() {
         
         pagerButton.do {
-            $0.layer.cornerRadius = 2
-            $0.backgroundColor = .gray1
+            $0.layer.cornerRadius = 3
+            $0.backgroundColor = .red
             $0.isUserInteractionEnabled = true
         }
         

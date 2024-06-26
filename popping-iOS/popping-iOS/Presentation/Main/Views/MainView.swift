@@ -11,14 +11,6 @@ import SnapKit
 import Then
 
 final class MainView: UIView {
-    
-    // MARK: - UI Properties
-
-    
-    // MARK: - Properties
-    
-    
-    // MARK: - Life Cycles
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,7 +41,7 @@ private extension MainView {
     }
     
     func setStyle() {
-        self.backgroundColor = .white
+        self.backgroundColor = .black
         
   
     }

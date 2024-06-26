@@ -64,7 +64,7 @@ private extension HeaderView {
         
         viewAllButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(15)
         }
         
@@ -77,12 +77,12 @@ private extension HeaderView {
             $0.textColor = .black
             $0.textAlignment = .center
             $0.numberOfLines = 1
-            $0.font = UIFont(name: "Pretendard-Semibold", size: 13)
+            $0.font = UIFont(name: "Pretendard-Semibold", size: 17)
         }
         
         viewAllButton.do {
             $0.setTitle("더보기", for: .normal)
-            $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 11)
+            $0.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 11)
             $0.setTitleColor(UIColor(resource: .gray1), for: .normal)
             $0.semanticContentAttribute = .forceRightToLeft
         }

@@ -52,7 +52,7 @@ private extension NavigationBarView {
     func setLayout() {
         
         searchTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(19)
+            $0.bottom.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(16)
             $0.width.equalTo(304)
             $0.height.equalTo(40)

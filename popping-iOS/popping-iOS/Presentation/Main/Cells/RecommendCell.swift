@@ -11,119 +11,87 @@ import SnapKit
 import Then
 
 class RecommendCell: UICollectionViewCell {
-
-   // MARK: - UI Properties
-   
-   let posterImageView: UIImageView = UIImageView()
-      
-   let rankingLabel: UILabel = UILabel()
-   
-   let channelInfoStackView: UIStackView = UIStackView()
-   
-   let channelLabel: UILabel = UILabel()
-   
-   let programTitleLabel: UILabel = UILabel()
-   
-   let ratingLabel: UILabel = UILabel()
-   
-   
-   // MARK: - Properties
-   
-   static let identifier: String = "PopularLiveCell"
-       
-   
-   // MARK: - Life Cycles
-   
-   override init(frame: CGRect) {
-       super.init(frame: frame)
-
-       setHierarchy()
-       setLayout()
-       setStyle()
-       
-   }
-   
-   required init?(coder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-   }
-   
-   func setCell(contents: Contents) {
-       posterImageView.image = contents.image
-       programTitleLabel.text = contents.title
-  
-   }
-
-}
-
-
-// MARK: - Private Methods
-
-private extension RecommendCell {
-   
-   func setHierarchy() {
-       
-       self.addSubviews(posterImageView, channelInfoStackView, rankingLabel)
-       channelInfoStackView.addArrangedSubviews(channelLabel, programTitleLabel, ratingLabel)
-       
-   }
-   
-   func setLayout() {
-       
-       posterImageView.snp.makeConstraints {
-           $0.top.leading.trailing.equalToSuperview()
-           $0.bottom.equalToSuperview().inset(58)
-       }
-       
-       rankingLabel.snp.makeConstraints {
-           $0.top.equalTo(posterImageView.snp.bottom).offset(10)
-           $0.leading.equalToSuperview().inset(8)
-       }
-       
-       channelInfoStackView.snp.makeConstraints {
-           $0.top.equalTo(posterImageView.snp.bottom).offset(10)
-           $0.leading.equalTo(rankingLabel.snp.trailing).offset(8)
-           $0.bottom.trailing.equalToSuperview()
-       }
-       
-   }
-   
-   func setStyle() {
-       
-       posterImageView.do {
-           $0.clipsToBounds = true
-           $0.layer.cornerRadius = 3
-       }
-       
-       rankingLabel.do {
-          // $0.font = UIFont.pretendard(.subhead6)
-          // $0.textColor = UIColor(resource: .white)
-           $0.textAlignment = .left
-       }
-       
-       channelInfoStackView.do {
-           $0.axis = .vertical
-           $0.alignment = .leading
-           $0.distribution = .fillEqually
-       }
-       
-       channelLabel.do {
-           //$0.font = UIFont.pretendard(.body3)
-         //  $0.textColor = UIColor(resource: .white)
-           $0.textAlignment = .left
-       }
-       
-       programTitleLabel.do {
-          // $0.font = UIFont.pretendard(.body3)
-         //  $0.textColor = UIColor(resource: .grey2)
-           $0.textAlignment = .left
-       }
     
-       ratingLabel.do {
-         //  $0.font = UIFont.pretendard(.body3)
-         //  $0.textColor = UIColor(resource: .grey2)
-           $0.textAlignment = .left
-       }
-   }
-   
+    // MARK: - UI Properties
+    
+    let posterImageView = UIImageView()
+    let titleLabel = UILabel()
+    let locationLabel = UILabel()
+    let dateLabel = UILabel()
+    
+    // MARK: - Properties
+    
+    static let identifier: String = "RecommendCell"
+    
+    // MARK: - Life Cycles
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setHierarchy()
+        setLayout()
+        setStyle()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setCell(contents: Contents) {
+        posterImageView.image = contents.image
+        titleLabel.text = contents.title
+        locationLabel.text = contents.location
+        dateLabel.text = contents.date
+    }
+    
+    // MARK: - Private Methods
+    
+    private func setHierarchy() {
+        self.contentView.addSubviews(posterImageView, titleLabel, locationLabel, dateLabel)
+    }
+    
+    private func setLayout() {
+        posterImageView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview()
+            $0.width.height.equalTo(139)
+        }
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(posterImageView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview()
+        }
+        locationLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+        }
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(locationLabel.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+        }
+    }
+    
+    private func setStyle() {
+        posterImageView.do {
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 7
+        }
+        
+        titleLabel.do {
+            $0.textColor = .black
+            $0.font = UIFont(name: "Pretendard-Medium", size: 13)
+            $0.numberOfLines = 1
+            $0.textAlignment = .left
+        }
+        
+        locationLabel.do {
+            $0.textColor = .black
+            $0.font = UIFont(name: "Pretendard-Regular", size: 11)
+            $0.textAlignment = .left
+        }
+        
+        dateLabel.do {
+            $0.textColor = UIColor(resource: .gray1)
+            $0.font = UIFont(name: "Pretendard-Regular", size: 11)
+            $0.textAlignment = .left
+        }
+    }
 }
-
