@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol LoginViewDelegate: AnyObject {
-    func presentCreateNicknameVC()
+    func pushToNicknameInputVC()
 }
 
 final class LoginView: UIView {
@@ -134,10 +134,7 @@ private extension LoginView {
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 14)
             $0.layer.cornerRadius = 7
-            
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(loginButtonTapped))
-            $0.isUserInteractionEnabled = true
-            $0.addGestureRecognizer(gesture)
+            $0.addTarget(self, action: #selector(pushToNicknameInputVC), for: .touchUpInside)
         }
         
         joinLabel.do {
@@ -149,8 +146,10 @@ private extension LoginView {
         }
     }
     
+    
     @objc
-    func loginButtonTapped(sender: UITapGestureRecognizer) {
-        delegate?.presentCreateNicknameVC()
+    func pushToNicknameInputVC() {
+        self.delegate?.pushToNicknameInputVC()
     }
+    
 }

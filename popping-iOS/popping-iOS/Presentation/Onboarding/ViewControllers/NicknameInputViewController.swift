@@ -14,11 +14,9 @@ protocol nickNameInputVCDelegate: AnyObject {
     func saveUserNickname(nickname: String)
 }
 
-final class nickNameInputViewController: UIViewController {
+final class NicknameInputViewController: UIViewController {
     
     // MARK: - UI Properties
-    private let dimmedView = UIView()
-    private let bottomSheetView = UIView()
     private let nicknameLabel = UILabel()
     private let nicknameTextField = UITextField()
     private let startButton = UIButton()
@@ -42,25 +40,16 @@ final class nickNameInputViewController: UIViewController {
 
 // MARK: - Private Methods
 
-private extension nickNameInputViewController {
+private extension NicknameInputViewController {
     
     func setHierarchy() {
-        self.view.addSubviews(dimmedView, bottomSheetView, nicknameLabel, nicknameTextField, startButton, logoImgaeView)
+        self.view.addSubviews(nicknameLabel, nicknameTextField, startButton, logoImgaeView)
     }
     
     func setLayout() {
-        dimmedView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(bottomSheetView)
-        }
-        
-        bottomSheetView.snp.makeConstraints {
-            $0.height.equalTo(406)
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
         
         nicknameLabel.snp.makeConstraints {
-            $0.top.equalTo(bottomSheetView.snp.top).inset(45)
+            $0.top.equalToSuperview().inset(86)
             $0.leading.equalToSuperview().inset(20)
         }
         
@@ -76,8 +65,7 @@ private extension nickNameInputViewController {
         }
         
         logoImgaeView.snp.makeConstraints {
-            $0.top.equalTo(bottomSheetView.snp.top).inset(193)
-            $0.centerX.equalToSuperview()
+            $0.centerX.centerY.equalToSuperview()
             $0.width.equalTo(163)
             $0.height.equalTo(36)
         }
@@ -85,18 +73,7 @@ private extension nickNameInputViewController {
     }
     
     func setStyle() {
-        dimmedView.do {
-            $0.alpha = 0.7
-            $0.layer.backgroundColor = UIColor(resource: .black).cgColor
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapDimmedView))
-            $0.isUserInteractionEnabled = true
-            $0.addGestureRecognizer(gesture)
-        }
-        
-        bottomSheetView.do {
-            $0.backgroundColor = .white
-            $0.roundCorners(cornerRadius: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
-        }
+        self.view.backgroundColor = .white
         
         nicknameLabel.do{
             $0.text = "사용하실 닉네임을 입력해주세요!"
@@ -128,24 +105,18 @@ private extension nickNameInputViewController {
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 14)
             $0.layer.cornerRadius = 7
+            $0.addTarget(self, action: #selector(startButtonTap), for: .touchUpInside)
         }
     }
+    
+    @objc
+    func startButtonTap() {
+        pushToMainVC()
+    }
+    
+    func pushToMainVC() {
+        let mainVC = MainViewController()
+        self.navigationController?.pushViewController(mainVC, animated: false)
+    }
 
-    func setActions() {
-        startButton.addTarget(self, action: #selector(pushToOnboardingVC), for: .touchUpInside)
-    }
-    
-    @objc
-    func pushToOnboardingVC() {
-        let nickname = self.nicknameTextField.text ?? ""
-        self.delegate?.saveUserNickname(nickname: nickname)
-        let mainVC = mainViewController()
-        mainVC.modalPresentationStyle = .fullScreen
-        self.present(mainVC, animated: true)
-    }
-    
-    @objc
-    func didTapDimmedView(sender: UITapGestureRecognizer) {
-        self.dismiss(animated: true)
-    }
 }

@@ -20,10 +20,12 @@
 		0D15AFA12C296E1900E922DF /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9D2C296E1900E922DF /* Pretendard-Medium.otf */; };
 		0D15AFA22C296E1900E922DF /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9E2C296E1900E922DF /* Pretendard-Regular.otf */; };
 		0D15AFA32C296E1900E922DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0D15AF9F2C296E1900E922DF /* Pretendard-SemiBold.otf */; };
+		0D411D932C2C1E9000633B81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411D922C2C1E9000633B81 /* MainViewController.swift */; };
+		0D411D952C2C293700633B81 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411D942C2C293700633B81 /* MainView.swift */; };
 		0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA872C298AD500A84E2D /* UIView+.swift */; };
 		0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA892C298AF500A84E2D /* UIStackView+.swift */; };
 		0D42CA8C2C298B3700A84E2D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8B2C298B3700A84E2D /* LoginView.swift */; };
-		0D42CA8E2C299A9D00A84E2D /* nickNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8D2C299A9D00A84E2D /* nickNameInputViewController.swift */; };
+		0D42CA8E2C299A9D00A84E2D /* NicknameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +41,12 @@
 		0D15AF9D2C296E1900E922DF /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		0D15AF9E2C296E1900E922DF /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		0D15AF9F2C296E1900E922DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		0D411D922C2C1E9000633B81 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0D411D942C2C293700633B81 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0D42CA872C298AD500A84E2D /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		0D42CA892C298AF500A84E2D /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0D42CA8B2C298B3700A84E2D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		0D42CA8D2C299A9D00A84E2D /* nickNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nickNameInputViewController.swift; sourceTree = "<group>"; };
+		0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		0D15AF932C296B2E00E922DF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0D411D8E2C2C1E4200633B81 /* Main */,
 				0D15AFA42C2977E600E922DF /* Onboarding */,
 			);
 			path = Presentation;
@@ -177,6 +182,39 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		0D411D8E2C2C1E4200633B81 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0D411D8F2C2C1E4B00633B81 /* Views */,
+				0D411D902C2C1E5000633B81 /* ViewControllers */,
+				0D411D912C2C1E6100633B81 /* Cells */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0D411D8F2C2C1E4B00633B81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D411D942C2C293700633B81 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D411D902C2C1E5000633B81 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D411D922C2C1E9000633B81 /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0D411D912C2C1E6100633B81 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		0D42CA842C29803400A84E2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				0D15AF712C2964F100E922DF /* LoginViewController.swift */,
-				0D42CA8D2C299A9D00A84E2D /* nickNameInputViewController.swift */,
+				0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -286,12 +324,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D42CA8C2C298B3700A84E2D /* LoginView.swift in Sources */,
+				0D411D952C2C293700633B81 /* MainView.swift in Sources */,
 				0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */,
-				0D42CA8E2C299A9D00A84E2D /* nickNameInputViewController.swift in Sources */,
+				0D42CA8E2C299A9D00A84E2D /* NicknameInputViewController.swift in Sources */,
 				0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */,
 				0D15AF722C2964F100E922DF /* LoginViewController.swift in Sources */,
 				0D15AF6E2C2964F100E922DF /* AppDelegate.swift in Sources */,
 				0D15AF702C2964F100E922DF /* SceneDelegate.swift in Sources */,
+				0D411D932C2C1E9000633B81 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 
-final class LoginViewController: UIViewController, LoginViewDelegate {
+final class LoginViewController: UIViewController {
     
     // MARK: - UI Properties
     private let loginView = LoginView()
@@ -26,15 +26,8 @@ final class LoginViewController: UIViewController, LoginViewDelegate {
         setHierarchy()
         setLayout()
         setStyle()
-        setDelegate()
     }
     
-    func presentCreateNicknameVC() {
-        let createNicknameVC = nickNameInputViewController()
-        createNicknameVC.delegate = self
-        createNicknameVC.modalPresentationStyle = .overFullScreen
-        self.present(createNicknameVC, animated: true)
-    }
 }
 
 
@@ -57,19 +50,13 @@ private extension LoginViewController {
         
     }
     
-    func setDelegate() {
-        loginView.delegate = self
-    }
-    
-    
-    
 }
 
-extension LoginViewController: nickNameInputVCDelegate {
-    
-    func saveUserNickname(nickname: String) {
-        self.nickname = nickname
-    }
-    
-}
 
+extension LoginViewController: LoginViewDelegate {
+    
+    func pushToNicknameInputVC(){
+        let nicknameInputVC = NicknameInputViewController()
+        self.navigationController?.pushViewController(nicknameInputVC, animated: true)
+    }
+}
