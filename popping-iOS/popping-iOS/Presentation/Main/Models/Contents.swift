@@ -35,6 +35,16 @@ extension Contents {
         UIImage(resource: .image1)
     ]
     
+    static let categoryImages2: [UIImage] = [
+        UIImage(resource: .recommend4),
+        UIImage(resource: .recommend5),
+        UIImage(resource: .recommend6),
+        UIImage(resource: .recommend1),
+        UIImage(resource: .recommend2),
+        UIImage(resource: .recommend3),
+        UIImage(resource: .recommend2)
+    ]
+    
     static let dummyTexts: [String] = [
         "Threetimes 23 FW",
         "SUPER MATCHA",
@@ -65,13 +75,24 @@ extension Contents {
         "상시 영업"
     ]
     
-    static func generateDummyContents() -> [Contents] {
+    static func recommendDummyContents() -> [Contents] {
         var dummyContents: [Contents] = []
         for i in 0..<categoryImages.count {
             let title = dummyTexts[i % dummyTexts.count]
             let location = locationDummy[i % locationDummy.count]
             let date = dateDummy[i % dateDummy.count]
             dummyContents.append(Contents(image: categoryImages[i], title: title, location: location, date: date))
+        }
+        return dummyContents
+    }
+    
+    static func deadlineDummyContents() -> [Contents] {
+        var dummyContents: [Contents] = []
+        for i in 0..<categoryImages2.count {
+            let title = dummyTexts[i % dummyTexts.count]
+            let location = locationDummy[i % locationDummy.count]
+            let date = dateDummy[i % dateDummy.count]
+            dummyContents.append(Contents(image: categoryImages2[i], title: title, location: location, date: date))
         }
         return dummyContents
     }

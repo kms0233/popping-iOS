@@ -19,8 +19,8 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
     private let navigationBarView = NavigationBarView()
     
     private var mainData: [Contents] = Contents.posterImages.map { Contents(image: $0, title: "", location: "", date: "") }
-    private var recommendData: [Contents] = Contents.generateDummyContents()
-    private var deadlineData: [Contents] = Contents.generateDummyContents()
+    private var recommendData: [Contents] = Contents.recommendDummyContents()
+    private var deadlineData: [Contents] = Contents.deadlineDummyContents()
     private let dataSource: [MainSection] = MainSection.dataSource
     private var prevValue: Int = 0
     private var newValue: Int = 0

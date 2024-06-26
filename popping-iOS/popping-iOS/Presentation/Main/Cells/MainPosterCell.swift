@@ -19,6 +19,7 @@ final class MainPosterCell: UICollectionViewCell {
 
     let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let gradientView = UIImageView(image: .gradient)
+    private let rankView = UIImageView(image: .rank)
     private let titleLabel = UILabel()
     private let dateLabel = UILabel()
 
@@ -59,7 +60,7 @@ final class MainPosterCell: UICollectionViewCell {
 // MARK: - Private Methods
 private extension MainPosterCell {
     func setHierarchy() {
-        self.addSubviews(pageVC.view, gradientView, titleLabel, dateLabel)
+        self.addSubviews(pageVC.view, gradientView,rankView, titleLabel, dateLabel)
     }
     
     func setLayout() {
@@ -68,6 +69,10 @@ private extension MainPosterCell {
         }
         gradientView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        rankView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(10)
+            $0.width.height.equalTo(44)
         }
         
         titleLabel.snp.makeConstraints {
