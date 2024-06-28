@@ -9,6 +9,8 @@ import UIKit
 
 import SnapKit
 
+//View
+//테이블 뷰 셀
 class ArticleTableViewCell: UITableViewCell {
 
     let titleLabel: UILabel = {
@@ -36,33 +38,23 @@ class ArticleTableViewCell: UITableViewCell {
     }
 
     private func setupViews() {
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(descriptionLabel)
+        contentView.addSubviews(titleLabel,descriptionLabel)
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(10)
-            make.left.equalTo(contentView).offset(10)
-            make.right.equalTo(contentView).offset(-10)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(10)
+            $0.left.equalTo(contentView).offset(10)
+            $0.right.equalTo(contentView).offset(-10)
         }
         
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.left.equalTo(contentView).offset(10)
-            make.right.equalTo(contentView).offset(-10)
-            make.bottom.equalTo(contentView).offset(-10)
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.left.equalTo(contentView).offset(10)
+            $0.right.equalTo(contentView).offset(-10)
+            $0.bottom.equalTo(contentView).offset(-10)
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  
 }
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -73,8 +65,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view)
+        tableView.snp.makeConstraints {
+            $0.edges.equalTo(view)
         }
         
         tableView.dataSource = self

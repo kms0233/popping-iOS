@@ -7,6 +7,11 @@
 
 import Foundation
 
+//Model
+//JSON 데이터를 파싱해 사용할 데이터 구조를 정의
+//우리가 받을 json파일 안에 articles라는 배열이 있음
+//이걸 ArticleList로 받아줄거임
+
 struct ArticleList: Decodable {
     let articles: [Article]
 }
@@ -16,7 +21,6 @@ struct Article: Decodable {
     let description: String?
 }
 
-//우리가 받을 json파일 안에 articles라는 배열이 있음
-//이걸 ArticleList로 받아줄거임
+
 
 

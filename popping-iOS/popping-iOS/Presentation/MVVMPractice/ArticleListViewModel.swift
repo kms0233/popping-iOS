@@ -27,16 +27,20 @@ extension ArticleListViewModel {
     }
 }
 
+//단일 Article 객체를 감싸는 역할
 struct ArticleViewModel {
     private let article: Article
 }
 
+
+//ArticleViewModel의 초기화 메서드를 정의
 extension ArticleViewModel {
     init(_ article: Article) {
         self.article = article
     }
 }
 
+//ArticleViewModel 속성에 접근할 수 있는 계산속성 정의
 extension ArticleViewModel {
     var title: String? {
         return self.article.title
