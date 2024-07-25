@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol PageControlButtonDelegate: AnyObject {
-    func didTapControlButton(index: Int)
-}
 
 class PageControlButtonView: UICollectionReusableView {
     
@@ -21,7 +18,7 @@ class PageControlButtonView: UICollectionReusableView {
     // MARK: - Properties
     
     static let elementKinds: String = "footer"
-    weak var delegate: PageControlButtonDelegate?
+
     static let identifier: String = "PageControlButtonView"
     
     var index: Int = 0 {

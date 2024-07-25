@@ -73,6 +73,7 @@ class RecommendCell: UICollectionViewCell {
         posterImageView.do {
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 7
+            $0.contentMode = .scaleAspectFill
         }
         
         titleLabel.do {

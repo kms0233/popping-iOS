@@ -27,18 +27,12 @@
 		0D411D9C2C2C348400633B81 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411D9B2C2C348400633B81 /* Contents.swift */; };
 		0D411D9E2C2C352700633B81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411D9D2C2C352700633B81 /* Constant.swift */; };
 		0D411DA02C2C371900633B81 /* PageControlButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411D9F2C2C371900633B81 /* PageControlButtonView.swift */; };
-		0D411DA22C2C37D300633B81 /* PagerButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411DA12C2C37D300633B81 /* PagerButtonCell.swift */; };
 		0D411DA42C2C3A4900633B81 /* MainPosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411DA32C2C3A4900633B81 /* MainPosterCell.swift */; };
 		0D411DA62C2C3AA000633B81 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D411DA52C2C3AA000633B81 /* RecommendCell.swift */; };
 		0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA872C298AD500A84E2D /* UIView+.swift */; };
 		0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA892C298AF500A84E2D /* UIStackView+.swift */; };
 		0D42CA8C2C298B3700A84E2D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8B2C298B3700A84E2D /* LoginView.swift */; };
 		0D42CA8E2C299A9D00A84E2D /* NicknameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */; };
-		0D6D32982C2DCA8500E9F0C8 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D32972C2DCA8500E9F0C8 /* ArticleTableViewCell.swift */; };
-		0D6D329A2C2DCA9100E9F0C8 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D32992C2DCA9100E9F0C8 /* Article.swift */; };
-		0D6D329C2C2DCAA100E9F0C8 /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D329B2C2DCAA100E9F0C8 /* ArticleListViewModel.swift */; };
-		0D6D329E2C2DCAB300E9F0C8 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D329D2C2DCAB300E9F0C8 /* WebService.swift */; };
-		0D6D32A02C2DCAC700E9F0C8 /* NewsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D329F2C2DCAC700E9F0C8 /* NewsListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,18 +55,12 @@
 		0D411D9B2C2C348400633B81 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		0D411D9D2C2C352700633B81 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0D411D9F2C2C371900633B81 /* PageControlButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlButtonView.swift; sourceTree = "<group>"; };
-		0D411DA12C2C37D300633B81 /* PagerButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerButtonCell.swift; sourceTree = "<group>"; };
 		0D411DA32C2C3A4900633B81 /* MainPosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPosterCell.swift; sourceTree = "<group>"; };
 		0D411DA52C2C3AA000633B81 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 		0D42CA872C298AD500A84E2D /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		0D42CA892C298AF500A84E2D /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0D42CA8B2C298B3700A84E2D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameInputViewController.swift; sourceTree = "<group>"; };
-		0D6D32972C2DCA8500E9F0C8 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		0D6D32992C2DCA9100E9F0C8 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		0D6D329B2C2DCAA100E9F0C8 /* ArticleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
-		0D6D329D2C2DCAB300E9F0C8 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
-		0D6D329F2C2DCAC700E9F0C8 /* NewsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +115,7 @@
 		0D15AF932C296B2E00E922DF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				0D6D32962C2DCA6500E9F0C8 /* MVVMPractice */,
+				0D9497A82C32759F0004B442 /* CourseDetail */,
 				0D411D8E2C2C1E4200633B81 /* Main */,
 				0D15AFA42C2977E600E922DF /* Onboarding */,
 			);
@@ -243,7 +231,6 @@
 		0D411D912C2C1E6100633B81 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				0D411DA12C2C37D300633B81 /* PagerButtonCell.swift */,
 				0D411DA32C2C3A4900633B81 /* MainPosterCell.swift */,
 				0D411DA52C2C3AA000633B81 /* RecommendCell.swift */,
 			);
@@ -282,16 +269,43 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		0D6D32962C2DCA6500E9F0C8 /* MVVMPractice */ = {
+		0D9497A82C32759F0004B442 /* CourseDetail */ = {
 			isa = PBXGroup;
 			children = (
-				0D6D32972C2DCA8500E9F0C8 /* ArticleTableViewCell.swift */,
-				0D6D32992C2DCA9100E9F0C8 /* Article.swift */,
-				0D6D329B2C2DCAA100E9F0C8 /* ArticleListViewModel.swift */,
-				0D6D329D2C2DCAB300E9F0C8 /* WebService.swift */,
-				0D6D329F2C2DCAC700E9F0C8 /* NewsListTableViewController.swift */,
+				0D9497AC2C3275E40004B442 /* Cells */,
+				0D9497AB2C3275D90004B442 /* ViewControllers */,
+				0D9497AA2C3275C20004B442 /* Views */,
+				0D9497A92C3275BA0004B442 /* Models */,
 			);
-			path = MVVMPractice;
+			path = CourseDetail;
+			sourceTree = "<group>";
+		};
+		0D9497A92C3275BA0004B442 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0D9497AA2C3275C20004B442 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D9497AB2C3275D90004B442 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0D9497AC2C3275E40004B442 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,17 +401,11 @@
 				0D42CA8E2C299A9D00A84E2D /* NicknameInputViewController.swift in Sources */,
 				0D42CA882C298AD500A84E2D /* UIView+.swift in Sources */,
 				0D411D972C2C2EC500633B81 /* HeaderView.swift in Sources */,
-				0D6D329E2C2DCAB300E9F0C8 /* WebService.swift in Sources */,
-				0D6D32A02C2DCAC700E9F0C8 /* NewsListTableViewController.swift in Sources */,
-				0D6D329C2C2DCAA100E9F0C8 /* ArticleListViewModel.swift in Sources */,
 				0D411D9C2C2C348400633B81 /* Contents.swift in Sources */,
-				0D6D32982C2DCA8500E9F0C8 /* ArticleTableViewCell.swift in Sources */,
-				0D6D329A2C2DCA9100E9F0C8 /* Article.swift in Sources */,
 				0D15AF722C2964F100E922DF /* LoginViewController.swift in Sources */,
 				0D411D9E2C2C352700633B81 /* Constant.swift in Sources */,
 				0D15AF6E2C2964F100E922DF /* AppDelegate.swift in Sources */,
 				0D15AF702C2964F100E922DF /* SceneDelegate.swift in Sources */,
-				0D411DA22C2C37D300633B81 /* PagerButtonCell.swift in Sources */,
 				0D411D932C2C1E9000633B81 /* MainViewController.swift in Sources */,
 				0D411DA02C2C371900633B81 /* PageControlButtonView.swift in Sources */,
 			);

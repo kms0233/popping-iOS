@@ -22,14 +22,8 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
     private var recommendData: [Contents] = Contents.recommendDummyContents()
     private var deadlineData: [Contents] = Contents.deadlineDummyContents()
     private let dataSource: [MainSection] = MainSection.dataSource
-    private var prevValue: Int = 0
-    private var newValue: Int = 0
-    private var currentPage: Int = 0 {
-        didSet {
-            prevValue = oldValue
-            newValue = currentPage
-        }
-    }
+
+    private var currentPage: Int = 0
     
     // MARK: - Life Cycles
     
@@ -137,17 +131,6 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
     }
 }
 
-extension MainViewController: PageControlButtonDelegate {
-    func didTapControlButton(index: Int) {
-        currentPage = index
-        let direction: UIPageViewController.NavigationDirection = prevValue < newValue ? .forward : .reverse
-        for cell in mainCollectionView.visibleCells {
-            if let mainPosterCell = cell as? MainPosterCell {
-                mainPosterCell.pageVC.setViewControllers([mainPosterCell.vcData[currentPage]], direction: direction, animated: true, completion: nil)
-            }
-        }
-    }
-}
 
 extension MainViewController: MainPosterDelegate {
     func didSwipePoster(index: Int, vc: UIPageViewController, vcData: [UIViewController]) {
@@ -208,8 +191,7 @@ extension MainViewController: UICollectionViewDataSource {
             return header
         } else if kind == PageControlButtonView.elementKinds {
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PageControlButtonView.identifier, for: indexPath) as? PageControlButtonView else { return UICollectionReusableView() }
-            footer.buttonCount = mainData.count
-            footer.delegate = self
+                footer.buttonCount = mainData.count
             return footer
         } else {
             return UICollectionReusableView()
