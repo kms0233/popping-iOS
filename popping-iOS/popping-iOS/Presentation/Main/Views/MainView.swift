@@ -16,8 +16,6 @@ final class MainView: UIView {
     
     lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: self.makeFlowLayout())
     
-    private let navigationBarView = NavigationBarView()
-    
     private let dataSource: [MainSection] = MainSection.dataSource
     
     override init(frame: CGRect) {
@@ -33,21 +31,17 @@ final class MainView: UIView {
     }
     
     func setHierarchy() {
-        self.addSubviews(mainCollectionView, navigationBarView)
+        self.addSubviews(mainCollectionView)
     }
     
     func setLayout() {
         
         mainCollectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationBarView.snp.bottom)
+            $0.top.equalToSuperview()
             $0.bottom.trailing.leading.equalToSuperview()
         }
         
-        navigationBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.width.equalToSuperview()
-            $0.height.equalTo(108)
-        }
+  
     }
     
     func setStyle() {

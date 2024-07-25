@@ -33,6 +33,7 @@
 		0D42CA8A2C298AF500A84E2D /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA892C298AF500A84E2D /* UIStackView+.swift */; };
 		0D42CA8C2C298B3700A84E2D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8B2C298B3700A84E2D /* LoginView.swift */; };
 		0D42CA8E2C299A9D00A84E2D /* NicknameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */; };
+		0D8299792C524E2E004480BD /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8299782C524E2E004480BD /* RankingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		0D42CA892C298AF500A84E2D /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		0D42CA8B2C298B3700A84E2D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0D42CA8D2C299A9D00A84E2D /* NicknameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameInputViewController.swift; sourceTree = "<group>"; };
+		0D8299782C524E2E004480BD /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				0D411D962C2C2EC500633B81 /* HeaderView.swift */,
 				0D411D982C2C312F00633B81 /* NavigationBarView.swift */,
 				0D411D9F2C2C371900633B81 /* PageControlButtonView.swift */,
+				0D8299782C524E2E004480BD /* RankingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				0D411D9E2C2C352700633B81 /* Constant.swift in Sources */,
 				0D15AF6E2C2964F100E922DF /* AppDelegate.swift in Sources */,
 				0D15AF702C2964F100E922DF /* SceneDelegate.swift in Sources */,
+				0D8299792C524E2E004480BD /* RankingView.swift in Sources */,
 				0D411D932C2C1E9000633B81 /* MainViewController.swift in Sources */,
 				0D411DA02C2C371900633B81 /* PageControlButtonView.swift in Sources */,
 			);

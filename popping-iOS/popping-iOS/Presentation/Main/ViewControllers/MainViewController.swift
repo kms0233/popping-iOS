@@ -14,21 +14,44 @@ import Then
 final class MainViewController: UIViewController, UICollectionViewDelegate {
     
     // MARK: - UI Properties
+    private let navigationBarView = NavigationBarView()
     
     private let mainView = MainView()
     
+    private let rankingView = RankingView()
+    
+    private let segmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: ["mainView", "rankingView"])
+        control.translatesAutoresizingMaskIntoConstraints = false
+        return control
+    }()
+    
+    // MARK: - Properties
     
     private var mainData: [Contents] = Contents.posterImages.map { Contents(image: $0, title: "", location: "", date: "") }
+    
     private var recommendData: [Contents] = Contents.recommendDummyContents()
+    
     private var deadlineData: [Contents] = Contents.deadlineDummyContents()
+    
     private let dataSource: [MainSection] = MainSection.dataSource
-
+    
     private var currentPage: Int = 0
+    
+    var shouldHideFirstView: Bool? {
+        
+        didSet {
+            guard let shouldHideFirstView = self.shouldHideFirstView else { return }
+            self.mainView.isHidden = shouldHideFirstView
+            self.rankingView.isHidden = !shouldHideFirstView
+        }
+    }
     
     // MARK: - Life Cycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setHierarchy()
         setLayout()
         setStyle()
@@ -36,23 +59,46 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         registerCell()
     }
     
-    // MARK: - Private Methods
-    
     private func setHierarchy() {
-        self.view.addSubview(mainView)
+        self.view.addSubviews(navigationBarView, segmentedControl, mainView, rankingView)
     }
     
     private func setLayout() {
         
-        mainView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        navigationBarView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalTo(108)
         }
+        
+        segmentedControl.snp.makeConstraints {
+            $0.top.equalTo(navigationBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        mainView.snp.makeConstraints {
+                $0.top.equalTo(segmentedControl.snp.bottom)
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+
+            rankingView.snp.makeConstraints {
+                $0.top.equalTo(segmentedControl.snp.bottom)
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+     
     }
+    
     
     private func setStyle() {
         self.navigationController?.navigationBar.isHidden = true
- 
+        
+        segmentedControl.do {
+            $0.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
+            $0.selectedSegmentIndex = 0
+        }
+        didChangeValue(segment: segmentedControl)
     }
+    
     
     private func setDelegate() {
         mainView.mainCollectionView.delegate = self
@@ -66,6 +112,11 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
             $0.register(HeaderView.self, forSupplementaryViewOfKind: HeaderView.elementKinds, withReuseIdentifier: HeaderView.identifier)
             $0.register(PageControlButtonView.self, forSupplementaryViewOfKind: PageControlButtonView.elementKinds, withReuseIdentifier: PageControlButtonView.identifier)
         }
+    }
+    
+    
+    @objc private func didChangeValue(segment: UISegmentedControl) {
+        self.shouldHideFirstView = segment.selectedSegmentIndex != 0
     }
     
     
@@ -131,7 +182,7 @@ extension MainViewController: UICollectionViewDataSource {
             return header
         } else if kind == PageControlButtonView.elementKinds {
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PageControlButtonView.identifier, for: indexPath) as? PageControlButtonView else { return UICollectionReusableView() }
-                footer.buttonCount = mainData.count
+            footer.buttonCount = mainData.count
             return footer
         } else {
             return UICollectionReusableView()
