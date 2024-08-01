@@ -20,8 +20,8 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
     
     private let rankingView = RankingView()
     
-    private let segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["mainView", "rankingView"])
+    private let segmentedControl: CustomSegmentedControl = {
+        let control = CustomSegmentedControl(items: ["추천", "랭킹"])
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
@@ -73,30 +73,34 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         
         segmentedControl.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(54)
         }
         
         mainView.snp.makeConstraints {
-                $0.top.equalTo(segmentedControl.snp.bottom)
-                $0.leading.trailing.bottom.equalToSuperview()
-            }
-
-            rankingView.snp.makeConstraints {
-                $0.top.equalTo(segmentedControl.snp.bottom)
-                $0.leading.trailing.bottom.equalToSuperview()
-            }
-     
+            $0.top.equalTo(segmentedControl.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        rankingView.snp.makeConstraints {
+            $0.top.equalTo(segmentedControl.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
     }
     
     
     private func setStyle() {
         self.navigationController?.navigationBar.isHidden = true
+        self.view.backgroundColor = .white
         
         segmentedControl.do {
             $0.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
             $0.selectedSegmentIndex = 0
         }
+        
         didChangeValue(segment: segmentedControl)
+        
     }
     
     
