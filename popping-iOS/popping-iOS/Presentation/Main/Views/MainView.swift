@@ -63,7 +63,8 @@ extension MainView {
         return UICollectionViewCompositionalLayout { section, _ -> NSCollectionLayoutSection? in
             switch self.dataSource[section] {
             case .mainContents: return self.makeMainContentsLayout()
-            case .recommendedContents, .deadlineContents: return self.makeRecommendLayout()
+            case .recommendedContents: return self.makeRecommendLayout()
+            case .deadlineContents: return self.makeDeadlineLayout()
             }
         }
     }
@@ -85,6 +86,22 @@ extension MainView {
     }
     
     private func makeRecommendLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(140/375), heightDimension: .absolute(240))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 27, trailing: 0)
+        
+        let header = makeHeaderView()
+        section.boundarySupplementaryItems = [header]
+        return section
+    }
+    
+    private func makeDeadlineLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8)

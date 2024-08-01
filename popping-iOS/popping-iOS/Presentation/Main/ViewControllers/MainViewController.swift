@@ -113,6 +113,7 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         mainView.mainCollectionView.do {
             $0.register(MainPosterCell.self, forCellWithReuseIdentifier: MainPosterCell.identifier)
             $0.register(RecommendCell.self, forCellWithReuseIdentifier: RecommendCell.identifier)
+            $0.register(DeadlineCell.self, forCellWithReuseIdentifier: DeadlineCell.identifier)
             $0.register(HeaderView.self, forSupplementaryViewOfKind: HeaderView.elementKinds, withReuseIdentifier: HeaderView.identifier)
             $0.register(PageControlButtonView.self, forSupplementaryViewOfKind: PageControlButtonView.elementKinds, withReuseIdentifier: PageControlButtonView.identifier)
         }
@@ -166,7 +167,7 @@ extension MainViewController: UICollectionViewDataSource {
             return cell
             
         case .deadlineContents:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCell.identifier, for: indexPath) as? RecommendCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeadlineCell.identifier, for: indexPath) as? DeadlineCell else { return UICollectionViewCell() }
             cell.setCell(contents: deadlineData[indexPath.row])
             return cell
         }
