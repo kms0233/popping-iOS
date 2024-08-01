@@ -18,13 +18,19 @@ final class MainPosterCell: UICollectionViewCell {
     
 
     let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    
     private let gradientView = UIImageView(image: .gradient)
-    private let rankView = UIImageView(image: .rank)
+    
     private let titleLabel = UILabel()
+    
     private let dateLabel = UILabel()
+    
+  
 
     var vcData: [UIViewController] = []
+    
     weak var delegate: MainPosterDelegate?
+    
     static let identifier: String = "MainPosterCell"
     
 
@@ -60,7 +66,7 @@ final class MainPosterCell: UICollectionViewCell {
 // MARK: - Private Methods
 private extension MainPosterCell {
     func setHierarchy() {
-        self.addSubviews(pageVC.view, gradientView,rankView, titleLabel, dateLabel)
+        self.addSubviews(pageVC.view, gradientView, titleLabel, dateLabel)
     }
     
     func setLayout() {
@@ -70,15 +76,12 @@ private extension MainPosterCell {
         gradientView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        rankView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(10)
-            $0.width.height.equalTo(44)
-        }
         
         titleLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(27)
             $0.leading.equalToSuperview().inset(16)
         }
+        
         dateLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(27)
             $0.trailing.equalToSuperview().inset(16)
@@ -100,6 +103,7 @@ private extension MainPosterCell {
             $0.numberOfLines = 1
             $0.font = UIFont(name: "Pretendard-Medium", size: 13)
         }
+        
     }
     func setVCInPageVC() {
         if let firstVC = vcData.first {
