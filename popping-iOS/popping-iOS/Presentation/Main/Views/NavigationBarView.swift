@@ -16,6 +16,8 @@ class NavigationBarView: UIView {
     
     private let searchTextField = UITextField()
     
+    private let searchIcon = UIImageView(image: .searchIcon)
+    
     private let alarmIcon = UIImageView(image: .alarmIcon)
     
     // MARK: - Properties
@@ -45,7 +47,7 @@ private extension NavigationBarView {
     
     func setHierarchy() {
         
-        self.addSubviews(searchTextField, alarmIcon)
+        self.addSubviews(searchTextField, searchIcon, alarmIcon)
         
     }
     
@@ -58,11 +60,16 @@ private extension NavigationBarView {
             $0.height.equalTo(40)
         }
         
+        searchIcon.snp.makeConstraints {
+            $0.centerY.equalTo(searchTextField)
+            $0.leading.equalTo(searchTextField).inset(12)
+            $0.size.equalTo(16)
+        }
         alarmIcon.snp.makeConstraints {
             $0.centerY.equalTo(searchTextField)
             $0.trailing.equalToSuperview().inset(16)
-            $0.width.equalTo(24)
-            $0.height.equalTo(29)
+            $0.width.equalTo(19)
+            $0.height.equalTo(22)
 
         }
         
@@ -75,7 +82,7 @@ private extension NavigationBarView {
             $0.font = UIFont(name: "Pretendard-Medium", size: 13)
             $0.backgroundColor = .white
             $0.layer.cornerRadius = 20
-            $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: $0.frame.height))
+            $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: $0.frame.height))
             $0.leftViewMode = .always
             $0.textColor = UIColor(resource: .black)
             
