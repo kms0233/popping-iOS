@@ -74,7 +74,7 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         segmentedControl.snp.makeConstraints {
             $0.top.equalTo(navigationBarView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(54)
+            $0.height.equalTo(50)
         }
         
         mainView.snp.makeConstraints {

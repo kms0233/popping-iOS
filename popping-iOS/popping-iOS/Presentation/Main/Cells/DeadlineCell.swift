@@ -16,6 +16,8 @@ class DeadlineCell: UICollectionViewCell {
     
     let posterImageView = UIImageView()
     
+    let dDayLabel = UIButton()
+    
     let titleLabel = UILabel()
     
     let locationLabel = UILabel()
@@ -50,13 +52,20 @@ class DeadlineCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func setHierarchy() {
-        self.contentView.addSubviews(posterImageView, titleLabel, locationLabel, dateLabel)
+        self.contentView.addSubviews(posterImageView, dDayLabel, titleLabel, locationLabel, dateLabel)
     }
     
     private func setLayout() {
         posterImageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
             $0.width.height.equalTo(139)
+        }
+        
+        dDayLabel.snp.makeConstraints {
+            $0.top.equalTo(posterImageView).inset(-5)
+            $0.trailing.equalTo(posterImageView).inset(17)
+            $0.width.equalTo(33)
+            $0.height.equalTo(29)
         }
         
         titleLabel.snp.makeConstraints {
@@ -99,6 +108,15 @@ class DeadlineCell: UICollectionViewCell {
             $0.textColor = UIColor(resource: .gray1)
             $0.font = UIFont(name: "Pretendard-Regular", size: 11)
             $0.textAlignment = .left
+        }
+        
+        dDayLabel.do {
+            $0.backgroundColor = UIColor(resource: .gray0)
+            $0.setTitle("D - 1", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 11)
+            $0.roundCorners(cornerRadius: 17, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+            $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         }
     }
 }

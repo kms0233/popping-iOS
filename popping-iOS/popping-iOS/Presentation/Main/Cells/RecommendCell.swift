@@ -118,7 +118,6 @@ class RecommendCell: UICollectionViewCell {
             $0.layer.borderWidth = 0.7
             $0.layer.borderColor = UIColor(resource: .main).cgColor
             $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7)
-
         }
     }
 }
