@@ -56,8 +56,8 @@ private extension NavigationBarView {
         searchTextField.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(10)
             $0.leading.equalToSuperview().inset(16)
-            $0.width.equalTo(304)
-            $0.height.equalTo(40)
+            $0.trailing.equalTo(alarmIcon.snp.leading).offset(-18)
+            $0.height.equalTo(36)
         }
         
         searchIcon.snp.makeConstraints {
@@ -81,7 +81,7 @@ private extension NavigationBarView {
         searchTextField.do {
             $0.font = UIFont(name: "Pretendard-Medium", size: 13)
             $0.backgroundColor = .white
-            $0.layer.cornerRadius = 20
+            $0.layer.cornerRadius = 18
             $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: $0.frame.height))
             $0.leftViewMode = .always
             $0.textColor = UIColor(resource: .black)
