@@ -1,8 +1,8 @@
 //
-//  RecommendCell.swift
+//  DeadlineCell.swift
 //  popping-iOS
 //
-//  Created by 김민서 on 6/26/24.
+//  Created by 김민서 on 8/1/24.
 //
 
 import UIKit
@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-class RecommendCell: UICollectionViewCell {
+class DeadlineCell: UICollectionViewCell {
     
     // MARK: - UI Properties
     
     let posterImageView = UIImageView()
     
-    private let categoryTag = UIButton()
+    let dDayLabel = UIButton()
     
     let titleLabel = UILabel()
     
@@ -26,7 +26,7 @@ class RecommendCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static let identifier: String = "RecommendCell"
+    static let identifier: String = "DeadlineCell"
     
     // MARK: - Life Cycles
     
@@ -52,7 +52,7 @@ class RecommendCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func setHierarchy() {
-        self.contentView.addSubviews(posterImageView, categoryTag, titleLabel, locationLabel, dateLabel)
+        self.contentView.addSubviews(posterImageView, dDayLabel, titleLabel, locationLabel, dateLabel)
     }
     
     private func setLayout() {
@@ -61,14 +61,15 @@ class RecommendCell: UICollectionViewCell {
             $0.width.height.equalTo(139)
         }
         
-        categoryTag.snp.makeConstraints {
-            $0.top.equalTo(posterImageView.snp.bottom).offset(8)
-            $0.leading.equalToSuperview()
-            $0.height.equalTo(21)
+        dDayLabel.snp.makeConstraints {
+            $0.top.equalTo(posterImageView).inset(-5)
+            $0.trailing.equalTo(posterImageView).inset(17)
+            $0.width.equalTo(33)
+            $0.height.equalTo(29)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(categoryTag.snp.bottom).offset(4)
+            $0.top.equalTo(posterImageView.snp.bottom).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -109,15 +110,13 @@ class RecommendCell: UICollectionViewCell {
             $0.textAlignment = .left
         }
         
-        categoryTag.do {
-            $0.backgroundColor = UIColor(resource: .lightpink)
-            $0.setTitle("#패션/의류", for: .normal)
-            $0.setTitleColor(.main, for: .normal)
-            $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 9)
-            $0.layer.cornerRadius = 5
-            $0.layer.borderWidth = 0.7
-            $0.layer.borderColor = UIColor(resource: .main).cgColor
-            $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7)
+        dDayLabel.do {
+            $0.backgroundColor = UIColor(resource: .gray0)
+            $0.setTitle("D - 1", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = UIFont(name: "Pretendard-Semibold", size: 11)
+            $0.roundCorners(cornerRadius: 17, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+            $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         }
     }
 }

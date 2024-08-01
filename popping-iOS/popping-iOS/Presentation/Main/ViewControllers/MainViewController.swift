@@ -14,20 +14,36 @@ import Then
 final class MainViewController: UIViewController, UICollectionViewDelegate {
     
     // MARK: - UI Properties
-    
-    private lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: self.makeFlowLayout())
     private let navigationBarView = NavigationBarView()
     
+    private let mainView = MainView()
+    
+    private let rankingView = RankingView()
+    
+    private let segmentedControl: CustomSegmentedControl = {
+        let control = CustomSegmentedControl(items: ["추천", "랭킹"])
+        control.translatesAutoresizingMaskIntoConstraints = false
+        return control
+    }()
+    
+    // MARK: - Properties
+    
     private var mainData: [Contents] = Contents.posterImages.map { Contents(image: $0, title: "", location: "", date: "") }
+    
     private var recommendData: [Contents] = Contents.recommendDummyContents()
+    
     private var deadlineData: [Contents] = Contents.deadlineDummyContents()
+    
     private let dataSource: [MainSection] = MainSection.dataSource
-    private var prevValue: Int = 0
-    private var newValue: Int = 0
-    private var currentPage: Int = 0 {
+    
+    private var currentPage: Int = 0
+    
+    var shouldHideFirstView: Bool? {
+        
         didSet {
-            prevValue = oldValue
-            newValue = currentPage
+            guard let shouldHideFirstView = self.shouldHideFirstView else { return }
+            self.mainView.isHidden = shouldHideFirstView
+            self.rankingView.isHidden = !shouldHideFirstView
         }
     }
     
@@ -35,6 +51,7 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setHierarchy()
         setLayout()
         setStyle()
@@ -42,117 +59,79 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         registerCell()
     }
     
-    // MARK: - Private Methods
-    
     private func setHierarchy() {
-        self.view.addSubviews(mainCollectionView, navigationBarView)
+        self.view.addSubviews(navigationBarView, segmentedControl, mainView, rankingView)
     }
     
     private func setLayout() {
-        mainCollectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationBarView.snp.bottom)
-            $0.bottom.trailing.leading.equalToSuperview()
-        }
+        
         navigationBarView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.equalTo(108)
         }
+        
+        segmentedControl.snp.makeConstraints {
+            $0.top.equalTo(navigationBarView.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(40)
+            $0.height.equalTo(50)
+        }
+        
+        mainView.snp.makeConstraints {
+            $0.top.equalTo(segmentedControl.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        rankingView.snp.makeConstraints {
+            $0.top.equalTo(segmentedControl.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
     }
+    
     
     private func setStyle() {
         self.navigationController?.navigationBar.isHidden = true
-        mainCollectionView.do {
-            $0.backgroundColor = .white
-            $0.showsVerticalScrollIndicator = false
-            $0.contentInsetAdjustmentBehavior = .never
+        self.view.backgroundColor = .white
+        
+        segmentedControl.do {
+            $0.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
+            $0.selectedSegmentIndex = 0
         }
+        
+        didChangeValue(segment: segmentedControl)
+        
     }
     
+    
     private func setDelegate() {
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
+        mainView.mainCollectionView.delegate = self
+        mainView.mainCollectionView.dataSource = self
     }
     
     private func registerCell() {
-        mainCollectionView.do {
+        mainView.mainCollectionView.do {
             $0.register(MainPosterCell.self, forCellWithReuseIdentifier: MainPosterCell.identifier)
             $0.register(RecommendCell.self, forCellWithReuseIdentifier: RecommendCell.identifier)
+            $0.register(DeadlineCell.self, forCellWithReuseIdentifier: DeadlineCell.identifier)
             $0.register(HeaderView.self, forSupplementaryViewOfKind: HeaderView.elementKinds, withReuseIdentifier: HeaderView.identifier)
             $0.register(PageControlButtonView.self, forSupplementaryViewOfKind: PageControlButtonView.elementKinds, withReuseIdentifier: PageControlButtonView.identifier)
         }
     }
     
-    private func makeFlowLayout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { section, _ -> NSCollectionLayoutSection? in
-            switch self.dataSource[section] {
-            case .mainContents: return self.makeMainContentsLayout()
-            case .recommendedContents, .deadlineContents: return self.makeRecommendLayout()
-            }
-        }
+    
+    @objc private func didChangeValue(segment: UISegmentedControl) {
+        self.shouldHideFirstView = segment.selectedSegmentIndex != 0
     }
     
-    private func makeMainContentsLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        let footer = makePageControlButtonView()
-        section.boundarySupplementaryItems = [footer]
-        
-        return section
-    }
     
-    private func makeRecommendLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(140/375), heightDimension: .absolute(240))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0)
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
-        
-        let header = makeHeaderView()
-        section.boundarySupplementaryItems = [header]
-        return section
-    }
-    
-    private func makeHeaderView() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(25))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: HeaderView.elementKinds, alignment: .top)
-        return header
-    }
-    
-    private func makePageControlButtonView() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15))
-        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: PageControlButtonView.elementKinds, alignment: .bottom)
-        return footer
-    }
 }
 
-extension MainViewController: PageControlButtonDelegate {
-    func didTapControlButton(index: Int) {
-        currentPage = index
-        let direction: UIPageViewController.NavigationDirection = prevValue < newValue ? .forward : .reverse
-        for cell in mainCollectionView.visibleCells {
-            if let mainPosterCell = cell as? MainPosterCell {
-                mainPosterCell.pageVC.setViewControllers([mainPosterCell.vcData[currentPage]], direction: direction, animated: true, completion: nil)
-            }
-        }
-    }
-}
 
 extension MainViewController: MainPosterDelegate {
     func didSwipePoster(index: Int, vc: UIPageViewController, vcData: [UIViewController]) {
         currentPage = index
-        if let pageControlButtonView = mainCollectionView.supplementaryView(forElementKind: PageControlButtonView.elementKinds, at: IndexPath(item: 0, section: 0)) as? PageControlButtonView {
+        if let pageControlButtonView = mainView.mainCollectionView.supplementaryView(forElementKind: PageControlButtonView.elementKinds, at: IndexPath(item: 0, section: 0)) as? PageControlButtonView {
             pageControlButtonView.index = currentPage
         }
     }
@@ -188,7 +167,7 @@ extension MainViewController: UICollectionViewDataSource {
             return cell
             
         case .deadlineContents:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCell.identifier, for: indexPath) as? RecommendCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeadlineCell.identifier, for: indexPath) as? DeadlineCell else { return UICollectionViewCell() }
             cell.setCell(contents: deadlineData[indexPath.row])
             return cell
         }
@@ -209,7 +188,6 @@ extension MainViewController: UICollectionViewDataSource {
         } else if kind == PageControlButtonView.elementKinds {
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PageControlButtonView.identifier, for: indexPath) as? PageControlButtonView else { return UICollectionReusableView() }
             footer.buttonCount = mainData.count
-            footer.delegate = self
             return footer
         } else {
             return UICollectionReusableView()
